@@ -138,7 +138,7 @@ export default function CreateNewSubmissionBinModal({
                                     Raw File Name Example
                                 </label>
                                 <Input
-                                    placeholder="e.g. ACC_LR_AUGUST"
+                                    placeholder="CLUSTER_LR_MONTH (e.g. ACC_LR_AUGUST)"
                                     value={fileName}
                                     onChange={(e) => setFileName(e.target.value)}
                                     className="

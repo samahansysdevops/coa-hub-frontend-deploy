@@ -342,8 +342,7 @@ export default function SubmissionBinFolder() {
               {formatSuffix && <span>{formatSuffix}</span>}
             </p>
             <p>
-              Raw File Name: <span className="font-semibold">FILE_NAME</span>{" "}
-              <span className="italic">(e.g. {rawFileNameExample})</span>
+              Raw File Name: <span className="font-semibold">{rawFileNameExample}</span>
             </p>
           </div>
 

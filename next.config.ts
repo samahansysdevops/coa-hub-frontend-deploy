@@ -9,6 +9,12 @@ const nextConfig: NextConfig = {
         port: "9000",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "ftphxcudgdnpeoeiromp.supabase.co",
+        port: '',
+        pathname: '/storage/v1/object/public/**',
+      },
     ],
   },
 };
