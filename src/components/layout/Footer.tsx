@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { LuFacebook, LuTwitter, LuInstagram } from "react-icons/lu";
+import { LuFacebook, LuTwitter } from "react-icons/lu";
 
 export default function Footer() {
   return (
@@ -38,15 +38,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                href="#"
-                className="font-montserrat text-lg hover:underline hover:underline-offset-4 transition-all"
-              >
-                About Us
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="#"
+                href="/announcements"
                 className="font-montserrat text-lg hover:underline hover:underline-offset-4 transition-all"
               >
                 Announcements
@@ -54,7 +46,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                href="#"
+                href="/submission-bin"
                 className="font-montserrat text-lg hover:underline hover:underline-offset-4 transition-all"
               >
                 Submission Bins
@@ -62,7 +54,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                href="#"
+                href="/members"
                 className="font-montserrat text-lg hover:underline hover:underline-offset-4 transition-all"
               >
                 Members
@@ -70,14 +62,23 @@ export default function Footer() {
             </li>
           </ul>
           <div className="flex gap-4 mt-8 justify-start w-full">
-            <a href="#" aria-label="Facebook">
+            <a
+              href="https://www.facebook.com/addu.coa"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              className="hover:opacity-80 transition-opacity"
+            >
               <LuFacebook className="w-7 h-7" />
             </a>
-            <a href="#" aria-label="Twitter">
+            <a
+              href="https://x.com/addu_coa"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Twitter"
+              className="hover:opacity-80 transition-opacity"
+            >
               <LuTwitter className="w-7 h-7" />
-            </a>
-            <a href="#" aria-label="Instagram">
-              <LuInstagram className="w-7 h-7" />
             </a>
           </div>
         </div>

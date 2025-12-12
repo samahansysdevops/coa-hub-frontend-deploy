@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import { ContentContainer } from "@/components/layout/ContentContainer";
 import { SectionContainer } from "@/components/layout/SectionContainer";
 import HeaderContainer from "@/components/layout/HeaderContainer";
+import HeroContainer from "@/components/layout/HeroContainer";
+import PageContainer from "@/components/layout/PageContainer";
 import { SharedButton } from "@/components/shared/SharedButton";
 import { Pencil } from 'lucide-react';
 import { Trash2 } from 'lucide-react';
@@ -42,17 +44,22 @@ export default function SubmissionBinPage() {
 
     if (isLoading) {
         return (
-            <ContentContainer>
-                <SectionContainer>
-                    {/* Header skeleton */}
-                    <SkeletonCard size="lg" variant="text-only" className="mb-6" />
+            <>
+                <HeroContainer title="SUBMISSION BINS" />
+                <PageContainer>
+                    <ContentContainer>
+                        <section className="mx-5 lg:mx-0">
+                            {/* Header skeleton */}
+                            <SkeletonCard size="lg" variant="text-only" className="mb-6" />
 
-                    {/* Table skeleton */}
-                    <div className="rounded-2xl overflow-hidden shadow-[0_20px_60px_-20px_rgba(0,0,0,0.35)] mt-8">
-                        <SkeletonCard size="md" lines={4} />
-                    </div>
-                </SectionContainer>
-            </ContentContainer>
+                            {/* Table skeleton */}
+                            <div className="rounded-2xl overflow-hidden shadow-[0_20px_60px_-20px_rgba(0,0,0,0.35)] mt-8">
+                                <SkeletonCard size="md" lines={4} />
+                            </div>
+                        </section>
+                    </ContentContainer>
+                </PageContainer>
+            </>
         );
     }
 
@@ -124,28 +131,30 @@ export default function SubmissionBinPage() {
     };
 
     return (
-        <div>
-            <ContentContainer>
-                <SectionContainer>
-                    <HeaderContainer
-                        title="FOLDERS"
-                        subtitle="You may access your designated Google Drive folders by clicking the submission bin above or on the side of your screen, or by using the buttons below."
-                        actions={isAdmin ? (
-                            <SharedButton
-                                onClick={() => setShowDialog(true)}
-                                variant="primary"
-                                tone="glass"
-                                size="md"
-                                rounded="md"
-                                className="text-sm font-light hover:scale-[1.02]"
-                            >
-                                Add New Folder
-                            </SharedButton>
-                        ) : undefined}
-                    />
+        <>
+            <HeroContainer title="SUBMISSION BINS" />
+            <PageContainer>
+                <ContentContainer>
+                    <section className="mx-5 lg:mx-0">
+                        <HeaderContainer
+                            title="FOLDERS"
+                            subtitle="You may access your designated Google Drive folders by clicking the submission bin above or on the side of your screen, or by using the buttons below."
+                            actions={isAdmin ? (
+                                <SharedButton
+                                    onClick={() => setShowDialog(true)}
+                                    variant="primary"
+                                    tone="glass"
+                                    size="md"
+                                    rounded="md"
+                                    className="text-sm font-light hover:scale-[1.02]"
+                                >
+                                    Add New Folder
+                                </SharedButton>
+                            ) : undefined}
+                        />
 
-                    {/* Folders */}
-                    <div className="mt-6 px-8">
+                        {/* Folders */}
+                        <div className="mt-6 px-8">
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full font-montserrat font-semibold">
                     {submission_bin?.map((bin) => (
                         <Link
@@ -248,11 +257,11 @@ export default function SubmissionBinPage() {
                         )}
                         </Link>
                     ))}
+                            </div>
                         </div>
-                    </div>
-
-                </SectionContainer>
-            </ContentContainer>
+                    </section>
+                </ContentContainer>
+            </PageContainer>
             
             {/* Add Submission Bin Dialog */}
             <CreateNewSubmissionBinModal
@@ -283,6 +292,6 @@ export default function SubmissionBinPage() {
                 onConfirm={handleDelete}
                 destructive={true}
             />
-        </div>
+        </>
     );
 }

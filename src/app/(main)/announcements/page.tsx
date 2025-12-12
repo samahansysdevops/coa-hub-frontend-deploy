@@ -7,7 +7,6 @@ import { SharedButton } from "@/components/shared/SharedButton";
 import HeroContainer from "@/components/layout/HeroContainer";
 import PageContainer from "@/components/layout/PageContainer";
 import ContentContainer from "@/components/layout/ContentContainer";
-import SectionContainer from "@/components/layout/SectionContainer";
 import HeaderContainer from "@/components/layout/HeaderContainer";
 
 import AnnouncementCard from "@/components/announcements/AnnouncementCard";
@@ -48,7 +47,7 @@ function RoleSection({
   onDelete,
 }: RoleSectionProps) {
   return (
-    <SectionContainer className="mb-6">
+    <section className="mb-6">
       <HeaderContainer
         title={
           <button
@@ -82,15 +81,17 @@ function RoleSection({
               />
             ))
           ) : (
-            <EmptyState
-              title={`No announcements from the ${role} yet`}
-              description="Check back later for updates."
-              size="sm"
-            />
+            <div className="flex w-full items-center justify-center py-16">
+              <EmptyState
+                title={`No announcements from the ${role} yet`}
+                description="Check back later for updates."
+                size="sm"
+              />
+            </div>
           )}
         </div>
       </div>
-    </SectionContainer>
+    </section>
   );
 }
 
@@ -172,10 +173,15 @@ export default function AnnouncementsPage() {
         <HeroContainer title="ANNOUNCEMENTS" />
         <PageContainer>
           <ContentContainer>
-            <EmptyState
-              title="Error loading announcements"
-              description="Failed to load announcements. Please try again."
-            />
+            <section className="mx-5 lg:mx-0">
+              <div className="flex w-full items-center justify-center py-16">
+                <EmptyState
+                  title="Error loading announcements"
+                  description="Failed to load announcements. Please try again."
+                  className="mx-auto"
+                />
+              </div>
+            </section>
           </ContentContainer>
         </PageContainer>
       </ProtectedRoute>
@@ -187,44 +193,32 @@ export default function AnnouncementsPage() {
       <HeroContainer title="ANNOUNCEMENTS" />
       <PageContainer>
         <ContentContainer>
-          {/* Main Header with Add Button */}
-          <HeaderContainer
-            title="ALL ANNOUNCEMENTS"
-            actions={isAdmin ? (
-              <SharedButton
-                onClick={() => setShowCreateModal(true)}
-                variant="primary"
-                tone="glass"
-                size="md"
-                rounded="md"
-                className="text-sm font-light hover:scale-[1.02]"
-              >
-                Add Announcement
-              </SharedButton>
-            ) : undefined}
-          />
-
           {/* Dynamic role sections */}
-          <div className="mt-6 px-8">
-          {roles.length > 0 ? (
-            roles.map((role) => (
-              <RoleSection
-                key={role}
-                role={role}
-                announcements={groupedAnnouncements.get(role) || []}
-                isExpanded={expandedRoles.has(role)}
-                onToggle={() => toggleRole(role)}
-                isAdmin={isAdmin}
-                onEdit={handleEdit}
-                onDelete={handleDeleteClick}
-              />
-            ))
-          ) : (
-            <EmptyState
-              title="No Announcements Yet"
-              description="Check back later for updates and announcements."
-            />
-          )}
+          <div className="mx-5 lg:mx-0">
+            {roles.length > 0 ? (
+              roles.map((role) => (
+                <RoleSection
+                  key={role}
+                  role={role}
+                  announcements={groupedAnnouncements.get(role) || []}
+                  isExpanded={expandedRoles.has(role)}
+                  onToggle={() => toggleRole(role)}
+                  isAdmin={isAdmin}
+                  onEdit={handleEdit}
+                  onDelete={handleDeleteClick}
+                />
+              ))
+            ) : (
+              <section>
+                <div className="flex w-full items-center justify-center py-16">
+                  <EmptyState
+                    title="No Announcements Yet"
+                    description="Check back later for updates and announcements."
+                    className="mx-auto"
+                  />
+                </div>
+              </section>
+            )}
           </div>
         </ContentContainer>
       </PageContainer>

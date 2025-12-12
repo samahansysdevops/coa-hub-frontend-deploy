@@ -4,13 +4,14 @@ import { useState } from 'react';
 import Link from 'next/link';
 import ProtectedRoute from '@/components/auth/ProtectedRoute';
 import { useAuth } from '@/lib/hooks/useAuth';
-import { Plus, Users, Megaphone, FolderPlus, CalendarClock, FileText, FolderOpen } from 'lucide-react';
+import { Plus, Users, Megaphone, FolderPlus, CalendarClock, FileText, FolderOpen, Presentation } from 'lucide-react';
 import CreateNewSubmissionBinModal from '@/components/features/submission_bin_page/create_new_submission_bin';
 import CreateNewDeadlineModal from '@/components/features/deadlines_page/create_new_deadline';
 import CreateNewTemplateModal from '@/components/features/templates_page/create_new_template';
 import CreateMemberModal from '@/components/features/members/create-member-modal';
 import CreateCategoryModal from '@/components/features/members/create-category-modal';
 import CreateAnnouncementModal from '@/components/announcements/CreateAnnouncementModal';
+import EditCuartaPresentationModal from '@/components/features/cuarta_presentations/edit-cuarta-presentation-modal';
 import { useCreateSubmissionBinMutation } from '@/lib/api/mutations/submission-bins.mutation';
 import { useCreateDeadlineMutation } from '@/lib/api/mutations/deadline.mutation';
 import { useCreateTemplateMutation } from '@/lib/api/mutations/template.mutation';
@@ -34,6 +35,7 @@ function AdminDashboard() {
   const [showMemberModal, setShowMemberModal] = useState(false);
   const [showCategoryModal, setShowCategoryModal] = useState(false);
   const [showAnnouncementModal, setShowAnnouncementModal] = useState(false);
+  const [showCuartaPresentationModal, setShowCuartaPresentationModal] = useState(false);
 
   const createSubmissionBin = useCreateSubmissionBinMutation();
   const createDeadline = useCreateDeadlineMutation();
@@ -177,6 +179,13 @@ function AdminDashboard() {
       onClick: () => setShowTemplateModal(true),
       icon: FileText,
       color: 'from-teal-500 to-teal-600',
+    },
+    {
+      title: 'Edit Cuarta Link',
+      description: 'Update the presentations link',
+      onClick: () => setShowCuartaPresentationModal(true),
+      icon: Presentation,
+      color: 'from-indigo-500 to-indigo-600',
     },
   ];
 
@@ -327,6 +336,12 @@ function AdminDashboard() {
       <CreateAnnouncementModal
         isOpen={showAnnouncementModal}
         onClose={() => setShowAnnouncementModal(false)}
+      />
+
+      {/* Cuarta Presentation Modal */}
+      <EditCuartaPresentationModal
+        open={showCuartaPresentationModal}
+        onClose={() => setShowCuartaPresentationModal(false)}
       />
     </>
   );

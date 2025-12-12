@@ -182,7 +182,7 @@ export default function TemplatesPage() {
 
   return (
     <div
-        className="min-h-screen w-full text-white py-2"
+        className="w-full text-white py-2"
         style={{
         background: "linear-gradient(225deg, #6C7178 0%, #373C44 100%)",
         }}
@@ -256,22 +256,22 @@ export default function TemplatesPage() {
                             onClick={(e) => e.stopPropagation()}
                           >
                             <button
-                              className="text-gray-800 group-hover:text-white transition-colors"
+                              className="p-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 transition-all"
                               onClick={() => {
                                   setSelectedTemplate(template);
                                   setEditModalOpen(true);
                               }}
                             >
-                              <Pencil />
+                              <Pencil className="w-4 h-4 text-white" />
                             </button>
                             <button
-                              className="text-gray-800 group-hover:text-white transition-colors"
+                              className="p-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 transition-all"
                               onClick={() => {
                                 setSelectedTemplate(template);
                                 setDeleteModalOpen(true);
                               }}
                             >
-                              <Trash2 />
+                              <Trash2 className="w-4 h-4 text-red-100" />
                             </button>
                           </div>
                         )}

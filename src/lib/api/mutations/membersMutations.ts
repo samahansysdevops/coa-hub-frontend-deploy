@@ -106,6 +106,7 @@ export function useDeleteMemberMutation() {
     mutationFn: (id: string) => membersApi.delete(id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["members"] });
+      queryClient.invalidateQueries({ queryKey: ["member-designations"] });
       toast.success("Member deleted successfully");
     },
     onError: (error: unknown) => {

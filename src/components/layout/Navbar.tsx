@@ -88,7 +88,7 @@ const Navbar = () => {
             <li>
               <Link
                 href="/"
-                className="px-4 py-2 rounded-lg hover:bg-gray-700 hover:text-white hover:underline transition-all font-montserrat whitespace-nowrap"
+                className="px-4 py-2 rounded-lg hover:bg-gray-700/80 hover:text-white transition-all font-montserrat whitespace-nowrap"
               >
                 Home
               </Link>
@@ -96,7 +96,7 @@ const Navbar = () => {
             <li>
               <Link
                 href="/announcements"
-                className="px-4 py-2 rounded-lg hover:bg-gray-700 hover:text-white hover:underline transition-all font-montserrat whitespace-nowrap"
+                className="px-4 py-2 rounded-lg hover:bg-gray-700/80 hover:text-white transition-all font-montserrat whitespace-nowrap"
               >
                 Announcements
               </Link>
@@ -110,11 +110,15 @@ const Navbar = () => {
                 aria-controls="about-menu"
                 className={`flex items-center px-4 py-2 rounded-lg transition-all font-montserrat whitespace-nowrap ${
                   aboutOpen
-                    ? "bg-gray-700 text-white underline"
-                    : "hover:bg-gray-700 hover:text-white hover:underline"
+                    ? "bg-gray-700 text-white"
+                    : "hover:bg-gray-700/80 hover:text-white"
                 }`}
                 type="button"
-                onClick={() => setAboutOpen((prev) => !prev)}
+                onClick={() => {
+                  setBinsOpen(false);
+                  setProfileOpen(false);
+                  setAboutOpen((prev) => !prev);
+                }}
               >
                 About Us
                 <svg
@@ -140,14 +144,6 @@ const Navbar = () => {
                 >
                   <li>
                     <Link
-                      href="/about"
-                      className="block px-4 py-2 hover:bg-[#9a9fa7] hover:text-white font-montserrat"
-                    >
-                      About Us
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
                       href="/members"
                       className="block px-4 py-2 hover:bg-[#9a9fa7] hover:text-white font-montserrat"
                     >
@@ -166,11 +162,15 @@ const Navbar = () => {
                 aria-controls="bins-menu"
                 className={`flex items-center px-4 py-2 rounded-lg transition-all font-montserrat whitespace-nowrap ${
                   binsOpen
-                    ? "bg-gray-700 text-white underline"
-                    : "hover:bg-gray-700 hover:text-white hover:underline"
+                    ? "bg-gray-700 text-white"
+                    : "hover:bg-gray-700/80 hover:text-white"
                 }`}
                 type="button"
-                onClick={() => setBinsOpen((prev) => !prev)}
+                onClick={() => {
+                  setAboutOpen(false);
+                  setProfileOpen(false);
+                  setBinsOpen((prev) => !prev);
+                }}
               >
                 Submission Bins
                 <svg
@@ -224,10 +224,14 @@ const Navbar = () => {
                 aria-controls="profile-menu"
                 className={`flex items-center px-4 py-2 rounded-lg transition-all font-montserrat ${
                   profileOpen
-                    ? "bg-gray-700 text-white underline"
-                    : "hover:bg-gray-700 hover:text-white hover:underline"
+                    ? "bg-gray-700 text-white"
+                    : "hover:bg-gray-700/80 hover:text-white"
                 }`}
-                onClick={() => setProfileOpen((prev) => !prev)}
+                onClick={() => {
+                  setAboutOpen(false);
+                  setBinsOpen(false);
+                  setProfileOpen((prev) => !prev);
+                }}
                 aria-label="User menu"
               >
                 <FaUserCircle className="w-6 h-6 mr-2" />
@@ -280,7 +284,7 @@ const Navbar = () => {
           ) : (
             <Link
               href="/login"
-              className="hidden md:flex items-center px-4 py-2 rounded-lg hover:bg-gray-700 hover:text-white hover:underline transition-all font-montserrat"
+              className="hidden md:flex items-center px-4 py-2 rounded-lg hover:bg-gray-700/80 hover:text-white transition-all font-montserrat"
             >
               Log In
             </Link>
@@ -332,7 +336,7 @@ const Navbar = () => {
             <li>
               <Link
                 href="/"
-                className="block px-4 py-2 rounded-lg hover:bg-gray-700 hover:text-white hover:underline transition-all font-montserrat"
+                className="block px-4 py-2 rounded-lg hover:bg-gray-700/80 hover:text-white transition-all font-montserrat"
                 onClick={() => setMobileOpen(false)}
               >
                 Home
@@ -341,7 +345,7 @@ const Navbar = () => {
             <li>
               <Link
                 href="/announcements"
-                className="block px-4 py-2 rounded-lg hover:bg-gray-700 hover:text-white hover:underline transition-all font-montserrat"
+                className="block px-4 py-2 rounded-lg hover:bg-gray-700/80 hover:text-white transition-all font-montserrat"
                 onClick={() => setMobileOpen(false)}
               >
                 Announcements
@@ -349,9 +353,12 @@ const Navbar = () => {
             </li>
             <li>
               <button
-                className="flex items-center w-full px-4 py-2 rounded-lg transition-all font-montserrat hover:bg-gray-700 hover:text-white hover:underline"
+                className="flex items-center w-full px-4 py-2 rounded-lg transition-all font-montserrat hover:bg-gray-700/80 hover:text-white"
                 type="button"
-                onClick={() => setAboutOpen((prev) => !prev)}
+                onClick={() => {
+                  setBinsOpen(false);
+                  setAboutOpen((prev) => !prev);
+                }}
               >
                 About Us
                 <svg
@@ -375,15 +382,6 @@ const Navbar = () => {
                 >
                   <li>
                     <Link
-                      href="/about"
-                      className="block px-4 py-2 hover:bg-[#9a9fa7] hover:text-white font-montserrat"
-                      onClick={() => setMobileOpen(false)}
-                    >
-                      About Us
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
                       href="/members"
                       className="block px-4 py-2 hover:bg-[#9a9fa7] hover:text-white font-montserrat"
                       onClick={() => setMobileOpen(false)}
@@ -396,9 +394,12 @@ const Navbar = () => {
             </li>
             <li>
               <button
-                className="flex items-center w-full px-4 py-2 rounded-lg transition-all font-montserrat hover:bg-gray-700 hover:text-white hover:underline"
+                className="flex items-center w-full px-4 py-2 rounded-lg transition-all font-montserrat hover:bg-gray-700/80 hover:text-white"
                 type="button"
-                onClick={() => setBinsOpen((prev) => !prev)}
+                onClick={() => {
+                  setAboutOpen(false);
+                  setBinsOpen((prev) => !prev);
+                }}
               >
                 Submission Bins
                 <svg

@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import HeaderContainer from "@/components/layout/HeaderContainer";
 import { SharedButton } from "@/components/shared/SharedButton";
-import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
+import { Table, TableRow, TableBody, TableCell } from "@/components/ui/table";
 import { Pencil } from 'lucide-react';
 import { Trash2 } from 'lucide-react';
 import { format } from "date-fns";
@@ -154,7 +154,7 @@ export default function DeadlinesPage() {
     };
 
     return (
-        <section>
+        <section className="mx-5 lg:mx-0">
             <HeaderContainer
                 title="DEADLINES"
                 actions={isAdmin ? (
@@ -175,22 +175,6 @@ export default function DeadlinesPage() {
             <div className="mt-6 px-8">
                 <div className="rounded-2xl overflow-hidden shadow-[0_20px_60px_-20px_rgba(0,0,0,0.35)]">
                 <Table className="border-collapse w-full">
-                    {/* HEADER */}
-                    <TableHeader>
-                        <TableRow>
-                            <TableHead
-                                colSpan={isAdmin ? 3 : 2}
-                                className="text-center text-white text-sm sm:text-lg md:text-xl tracking-wide py-6 font-semibold"
-                                style={{
-                                    background: "linear-gradient(90deg, #6C7178 0%, #373C44 100%)",
-                                }}
-                            >
-                                MONTHLY LRS
-                            </TableHead>
-                        </TableRow>
-                    </TableHeader>
-
-                    {/* BODY */}
                     <TableBody>
                         {rows?.map((row, index) => (
                             <TableRow key={index} className="border border-[#c8c8c8] hover:bg-transparent">
@@ -242,7 +226,7 @@ export default function DeadlinesPage() {
                                         className="
                                             flex
                                             items-center
-                                            gap-3 sm:gap-4 md:gap-6
+                                            gap-2 sm:gap-3
                                             justify-center
                                             py-8 px-1 sm:px-2 md:px-0
                                         "
@@ -253,18 +237,18 @@ export default function DeadlinesPage() {
                                                 setSelectedRow(row);
                                                 setEditModalOpen(true);
                                             }}
-                                            className="text-[#373C44] hover:text-black transition"
+                                            className="p-2 rounded-full bg-gray-500/10 hover:bg-gray-500/20 border border-gray-400/30 transition-all"
                                         >
-                                            <Pencil className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+                                            <Pencil className="w-4 h-4 sm:w-5 sm:h-5 text-[#373C44]" />
                                         </button>
                                         <button
                                             onClick={() => {
                                                 setSelectedRow(row);
                                                 setDeleteModalOpen(true);
                                             }}
-                                            className="text-[#373C44] hover:text-black transition"
+                                            className="p-2 rounded-full bg-gray-500/10 hover:bg-gray-500/20 border border-gray-400/30 transition-all"
                                         >
-                                            <Trash2 className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
+                                            <Trash2 className="w-4 h-4 sm:w-5 sm:h-5 text-red-400" />
                                         </button>
                                     </TableCell>
                                 )}

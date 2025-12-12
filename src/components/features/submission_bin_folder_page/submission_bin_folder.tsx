@@ -103,10 +103,14 @@ export default function SubmissionBinFolder() {
         <HeroContainer title="SUBMISSION BIN" />
         <PageContainer>
           <ContentContainer>
-            <EmptyState
-              title="Submission bin not found"
-              description="The requested submission bin could not be found."
-            />
+            <div className="flex w-full items-center justify-center py-16">
+              <EmptyState
+                title="Submission bin not found"
+                description="The requested submission bin could not be found."
+                className="mx-auto"
+                size="lg"
+              />
+            </div>
           </ContentContainer>
         </PageContainer>
       </ProtectedRoute>
@@ -258,7 +262,7 @@ export default function SubmissionBinFolder() {
         <ContentContainer>
           {/* Admin Actions Toolbar */}
           {isAdmin && (
-            <div className="flex flex-wrap gap-3 justify-end">
+            <div className="flex flex-wrap gap-3 justify-end mr-5 lg:mr-0">
               <button
                 onClick={() => setDesignateMemberModalOpen(true)}
                 className="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-[#49515A] to-[#373C44] text-white rounded-lg shadow hover:brightness-110 transition-all text-sm font-medium"
@@ -277,14 +281,14 @@ export default function SubmissionBinFolder() {
           )}
 
           {/* Step-by-step Instructions */}
-          <div className="bg-gradient-to-r from-[#6C7178] to-[#373C44] rounded-xl md:rounded-2xl p-5 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.35)] flex flex-col sm:flex-col md:flex-row gap-4 md:gap-0 items-center justify-center">
+          <div className="mx-5 lg:mx-0 bg-gradient-to-r from-[#6C7178] to-[#373C44] rounded-xl md:rounded-2xl p-5 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.35)] flex flex-col sm:flex-col md:flex-row items-center justify-center">
             <label className="text-4xl md:text-6xl text-white text-center font-medium font-bebas-neue uppercase">
               Step-by-Step Process: Online Submission
             </label>
           </div>
 
-          <div className="bg-gradient-to-b from-[#6C7178] to-[#373C44] text-white px-15 md:px-20 py-15 rounded-xl">
-            <ol className="list-decimal list-outside space-y-4 text-gray-200 text-justify font-montserrat leading-relaxed text-sm md:text-lg">
+          <div className="mx-5 lg:mx-0 px-15 md:px-20 pb-15 rounded-xl">
+            <ol className="list-decimal list-outside space-y-4 text-black text-justify font-montserrat leading-relaxed text-sm md:text-lg">
               <li>
                 {
                   "Find the button assigned to your cluster, then click to open your designated Google Drive submission folder."
@@ -331,7 +335,7 @@ export default function SubmissionBinFolder() {
           </div>
 
           {/* Raw File Section */}
-          <div className="font-montserrat bg-gradient-to-r from-[#6C7178] to-[#373C44] py-8 rounded-xl text-white text-sm md:text-lg text-center space-y-3 shadow-[0_16px_32px_-8px_rgba(12,12,13,0.40)]">
+          <div className="mx-5 lg:mx-0 font-montserrat bg-gradient-to-r from-[#6C7178] to-[#373C44] py-8 rounded-xl text-white text-sm md:text-lg text-center space-y-3 shadow-[0_16px_32px_-8px_rgba(12,12,13,0.40)]">
             <p>
               Raw File Format:{" "}
               <span className="font-semibold">{formatMain}</span>
@@ -346,7 +350,7 @@ export default function SubmissionBinFolder() {
           {/* Folder buttons with admin controls */}
           {filteredFolders.length > 0 ? (
             <div
-              className={`grid gap-4 font-montserrat ${isSingleColumn ? "grid-cols-1" : "grid-cols-1 md:grid-cols-2"}`}
+              className={`grid gap-4 mx-10 lg:mx-0 font-montserrat ${isSingleColumn ? "grid-cols-1" : "grid-cols-1 md:grid-cols-2"}`}
             >
               {filteredFolders.map(
                 (folder: SubmissionBinFolderType, index: number) => {
@@ -460,16 +464,20 @@ export default function SubmissionBinFolder() {
               )}
             </div>
           ) : (
-            <EmptyState
-              title="No folders yet"
-              description="No submission folders have been added to this bin."
-            />
+            <div className="flex w-full items-center justify-center py-16">
+              <EmptyState
+                title="No folders yet"
+                description="No submission folders have been added to this bin."
+                className="mx-auto"
+                size="lg"
+              />
+            </div>
           )}
 
           {/* COA Auditors Section */}
           {designations && designations.length > 0 && (
-            <div className="mt-8">
-              <h3 className="text-2xl md:text-3xl font-bebas-neue text-gray-800 mb-6">
+            <div className="mt-8 mx-5 lg:mx-0">
+              <h3 className="text-2xl md:text-3xl font-bebas-neue text-gray-800 text-center mb-6">
                 COA AUDITORS
               </h3>
               <div className="flex flex-wrap justify-center gap-4 md:gap-6">

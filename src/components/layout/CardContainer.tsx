@@ -9,27 +9,32 @@ export interface CardContainerProps {
   className?: string;
   imageSrc?: string;
   imageAlt?: string;
-  adminAction?: AdminAction;
-  onActionClick?: () => void;
+  isAdmin?: boolean;
+  onEdit?: () => void;
+  onDelete?: () => void;
+  fullWidth?: boolean;
 }
 /**
  * CardContainer
  * - Displays a card with an optional image at the top
  * - Children content will be the info of staff/member
  * - Supports admin actions (edit/delete) with icon overlay
+ * - fullWidth only affects layout positioning, not image size
  */
 export const CardContainer: React.FC<CardContainerProps> = ({
   children,
   className = "",
   imageSrc,
   imageAlt = "",
-  adminAction = null,
-  onActionClick,
+  isAdmin = false,
+  onEdit,
+  onDelete,
+  fullWidth = false,
 }) => (
   <div
-    className={`rounded-md flex flex-col items-center p-2 md:p-3 w-full max-w-[180px] md:max-w-[299px] min-h-[260px] md:min-h-[400px] mx-auto ${className}`}
+    className={`rounded-md flex flex-col items-center p-2 md:p-3 mx-auto w-full max-w-[180px] md:max-w-[299px] min-h-[260px] md:min-h-[400px] ${className}`}
   >
-    <div className="relative w-full">
+    <div className="relative w-full group">
       {imageSrc ? (
         <Image
           src={imageSrc}
@@ -42,18 +47,33 @@ export const CardContainer: React.FC<CardContainerProps> = ({
         <div className="w-full h-[230px] md:h-[382px] rounded-sm bg-gray-100 border border-gray-300 mb-1.5 md:mb-2 shadow-lg md:shadow-2xl" />
       )}
 
-      {adminAction && (
-        <button
-          onClick={onActionClick}
-          className="absolute top-2 md:top-3 left-2 md:left-3 hover:opacity-80 transition-opacity"
-          aria-label={adminAction === "edit" ? "Edit member" : "Delete member"}
-        >
-          {adminAction === "edit" ? (
-            <Pencil className="w-4 h-4 md:w-6 md:h-6 text-gray-800" />
-          ) : (
-            <Trash2 className="w-4 h-4 md:w-6 md:h-6 text-gray-800" />
+      {isAdmin && (onEdit || onDelete) && (
+        <div className="absolute top-2 md:top-3 right-2 md:right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+          {onEdit && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onEdit();
+              }}
+              className="p-2 rounded-full bg-white/90 hover:bg-white shadow-md transition-all"
+              aria-label="Edit member"
+            >
+              <Pencil className="w-4 h-4 md:w-5 md:h-5 text-gray-700" />
+            </button>
           )}
-        </button>
+          {onDelete && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onDelete();
+              }}
+              className="p-2 rounded-full bg-white/90 hover:bg-white shadow-md transition-all"
+              aria-label="Delete member"
+            >
+              <Trash2 className="w-4 h-4 md:w-5 md:h-5 text-red-500" />
+            </button>
+          )}
+        </div>
       )}
     </div>
 

@@ -120,30 +120,22 @@ export default function AnnouncementCard({
         {/* Action Buttons (for Admin) */}
         {variant === "admin" && (
           <>
-            {/* Desktop - Original design */}
-            <div className="hidden sm:flex items-center gap-3">
-              <Button
-                variant="ghost"
-                size="icon"
-                className="h-14 w-14 text-[#E7EAEF] hover:text-[#E7EAEF] hover:bg-transparent"
+            {/* Desktop - Sleek circular design */}
+            <div className="hidden sm:flex items-center gap-2">
+              <button
+                type="button"
+                className="p-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 transition-all"
                 onClick={() => onEdit?.(announcement.id)}
               >
-                <MdOutlineModeEdit
-                  className="h-12 w-12"
-                  style={{ width: "44px", height: "44px", color: "#E7EAEF" }}
-                />
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="h-14 w-14 text-[#E7EAEF] hover:text-[#E7EAEF] hover:bg-transparent"
+                <MdOutlineModeEdit className="w-5 h-5 text-white" />
+              </button>
+              <button
+                type="button"
+                className="p-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 transition-all"
                 onClick={() => onDelete?.(announcement.id)}
               >
-                <RiDeleteBin6Line
-                  className="h-12 w-12"
-                  style={{ width: "38px", height: "38px", color: "#E7EAEF" }}
-                />
-              </Button>
+                <RiDeleteBin6Line className="w-5 h-5 text-red-100" />
+              </button>
             </div>
 
             {/* Mobile - 3 dots menu */}
