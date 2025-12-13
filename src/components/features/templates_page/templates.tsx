@@ -239,13 +239,14 @@ export default function TemplatesPage() {
                         {/* DARK OVERLAY (darkens whole card) */}
                         <div
                           className="
-                            absolute inset-0 
-                            bg-black/55 
-                            opacity-0 
-                            group-hover:opacity-100 
-                            transition-all duration-300 
-                            rounded-xl 
+                            absolute inset-0
+                            bg-black/55
+                            opacity-0
+                            group-hover:opacity-100
+                            transition-all duration-300
+                            rounded-xl
                             z-10
+                            pointer-events-none
                           "
                         ></div>
 
@@ -286,7 +287,7 @@ export default function TemplatesPage() {
                             {/* GOOGLE DRIVE PREVIEW */}
                             <iframe
                               src={previewUrl}
-                              className="w-full h-[200px] rounded-md"
+                              className="w-full h-[200px] rounded-md pointer-events-none"
                               allow="autoplay"
                             />
                           </a>
